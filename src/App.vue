@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import { ref } from 'vue'
-let imageList = ref([
-  "gundam",
-  "girl",
-  "trans", 
-  "gang"
-])
- 
-let offSets = ref(['40%','45%','50%','40%'])
-
+import { RouterLink, RouterView } from 'vue-router';
+import HelloWorld from './components/HelloWorld.vue';
+import { ref } from 'vue';
+let imageList = ref(['gundam', 'girl', 'trans', 'gang']);
+let offSets = ref(['40%', '45%', '50%', '40%']);
+var userName = ref(null);
+var passWord = ref(null);
 </script>
 
 <template>
@@ -19,28 +14,28 @@ let offSets = ref(['40%','45%','50%','40%'])
       <text>Crafter</text>
     </div>
     <div class="imageContainer">
-      <div v-for="(value, index) in imageList" :class="`imageItem${index + 1}`" 
-        :style="{ 
+      <div
+        v-for="(value, index) in imageList"
+        :class="`imageItem${index + 1}`"
+        :style="{
           'background-position': `${offSets[index]}`,
           'background-image': `url('/src/assets/images/${value}.JPG')`
-      }">
-      </div>
+        }"
+      ></div>
     </div>
     <div class="loginArea">
-      <div class="loginTitle">
-
-      </div>
+      <div class="loginTitle"></div>
       <div class="textArea">
-       <text> Username or email address</text>
+        <text> Username or email address</text>
       </div>
       <div class="inputArea">
-        <el-input></el-input>
+        <el-input v-model="userName"></el-input>
       </div>
       <div class="textArea">
-       <text> Password</text>
+        <text> Password</text>
       </div>
       <div class="inputArea">
-        <el-input></el-input>
+        <el-input v-model="passWord"></el-input>
       </div>
       <div class="loginIcons">
         <el-row :gutter="20">
@@ -49,7 +44,7 @@ let offSets = ref(['40%','45%','50%','40%'])
           </el-col>
         </el-row>
       </div>
-      <div class="buttomArea">
+      <div class="buttonArea">
         <el-button type="primary" size="large">Sign in</el-button>
       </div>
     </div>
@@ -62,16 +57,14 @@ let offSets = ref(['40%','45%','50%','40%'])
     transform: scale(1);
   }
   50% {
-    transform: scale(1.05);
-  } 
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-
-.element {
-  animation: scaleAnimation 2s;
-}
-
 div {
-  // border: 1px solid white; 
+  // border: 1px solid white;
   display: flex;
 }
 .app-container {
@@ -95,29 +88,28 @@ div {
     line-height: normal;
     //box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   }
-    .imageContainer {
+  .imageContainer {
     width: 100%;
     height: 100%;
     background-color: black;
-    opacity: 0.9; 
+    opacity: 0.9;
     // filter: blur(1px);
-    $total: 4; 
+    $total: 4;
     @for $i from 0 through 4 {
       .imageItem#{$i} {
         flex: 1;
-        height: 100%; 
+        height: 100%;
         background-repeat: no-repeat;
         background-size: cover;
-        margin: 1px;
         animation: scaleAnimation 2s ease;
-        animation-delay: #{2 * ( $i - 1)}s;
-        animation-fill-mode: both;
+        animation-delay: #{2 * ($i - 1)}s;
+
         animation-direction: alternate;
       }
     }
   }
   .loginArea {
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     padding: 2%;
     width: 35%;
@@ -136,7 +128,7 @@ div {
     .loginTitle {
       width: 60%;
       height: 30%;
-      align-self: center; 
+      align-self: center;
     }
     .textArea {
       font-size: 20px;
@@ -148,7 +140,7 @@ div {
       height: 8%;
       color: black;
     }
-    .buttomArea {
+    .buttonArea {
       width: 90%;
       margin-top: 5%;
       height: 9%;
@@ -161,6 +153,5 @@ div {
       }
     }
   }
-} 
-
+}
 </style>
