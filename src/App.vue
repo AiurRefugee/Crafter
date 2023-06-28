@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
-import { ref } from 'vue';
-let imageList = ref(['gundam', 'girl', 'trans', 'gang']);
-let offSets = ref(['40%', '45%', '50%', '40%']);
-var userName = ref(null);
-var passWord = ref(null);
-</script>
-
 <template>
   <div class="app-container">
     <div class="iconTitle">
@@ -17,9 +7,11 @@ var passWord = ref(null);
       <div
         v-for="(value, index) in imageList"
         :class="`imageItem${index + 1}`"
+        :ref="`image${index}`"
         :style="{
           'background-position': `${offSets[index]}`,
-          'background-image': `url('/src/assets/images/${value}.JPG')`
+          'background-image': `url('/src/assets/images/${value}.JPG')`,
+          'background-size': `${scales[index].value}%`
         }"
       ></div>
     </div>
@@ -50,14 +42,56 @@ var passWord = ref(null);
     </div>
   </div>
 </template>
-
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router';
+import HelloWorld from './components/HelloWorld.vue';
+import { ref, onMounted } from 'vue';
+import gsap from 'gsap';
+let imageList = ref(['gundam', 'girl', 'trans', 'gang']);
+let offSets = ref(['40%', '45%', '50%', '40%']);
+var scales = ref([{ value: 260 }, { value: 310 }, { value: 330 }, { value: 160 }]);
+var scalesTo = ref([{ value: 300 }, { value: 350 }, { value: 370 }, { value: 200 }]);
+var userName = ref(null);
+var passWord = ref(null);
+var image0 = ref(null);
+var image1 = ref(null);
+var image2 = ref(null);
+var image3 = ref(null);
+function playAnimation() {
+  for (let index = 0; index < scales.value.length; index++) {
+    gsap.to(scales.value[index], {
+      duration: 2,
+      value: scalesTo.value[index].value,
+      delay: 4 * index,
+      ease: 'strong.inOut'
+    });
+    gsap.to(scales.value[index], {
+      duration: 2,
+      value: scales.value[index].value,
+      delay: 4 * index + 2,
+      ease: 'strong.inOut'
+    });
+  }
+}
+onMounted(() => {
+  playAnimation();
+  setInterval(() => {
+    playAnimation();
+  }, 17000);
+});
+</script>
 <style lang="scss" scoped>
+:deep(.el-button--large) {
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+}
 @keyframes scaleAnimation {
   0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(0.95);
+    transform: scale(1.05);
   }
   100% {
     transform: scale(1);
@@ -66,6 +100,14 @@ var passWord = ref(null);
 div {
   // border: 1px solid white;
   display: flex;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE 和 Edge */
+  scrollbar-width: none; /* Firefox */
+
+  /* WebKit (Chrome 和 Safari) */
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 .app-container {
   width: 100vw;
@@ -95,16 +137,14 @@ div {
     opacity: 0.9;
     // filter: blur(1px);
     $total: 4;
-    @for $i from 0 through 4 {
+
+    @for $i from 1 through 4 {
       .imageItem#{$i} {
         flex: 1;
         height: 100%;
         background-repeat: no-repeat;
-        background-size: cover;
-        animation: scaleAnimation 2s ease;
+        // animation: scaleAnimation 2s ease;
         animation-delay: #{2 * ($i - 1)}s;
-
-        animation-direction: alternate;
       }
     }
   }
@@ -144,13 +184,6 @@ div {
       width: 90%;
       margin-top: 5%;
       height: 9%;
-      ::v-deep {
-        .el-button--large {
-          width: 100%;
-          height: 100%;
-          font-size: 25px;
-        }
-      }
     }
   }
 }
