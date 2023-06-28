@@ -50,7 +50,7 @@ import gsap from 'gsap';
 let imageList = ref(['gundam', 'girl', 'trans', 'gang']);
 let offSets = ref(['40%', '45%', '50%', '40%']);
 var scales = ref([{ value: 260 }, { value: 310 }, { value: 330 }, { value: 160 }]);
-var scalesTo = ref([{ value: 300 }, { value: 350 }, { value: 370 }, { value: 200 }]);
+var scalesTo = ref([{ value: 280 }, { value: 330 }, { value: 350 }, { value: 180 }]);
 var userName = ref(null);
 var passWord = ref(null);
 var image0 = ref(null);
@@ -69,7 +69,7 @@ function playAnimation() {
       duration: 2,
       value: scales.value[index].value,
       delay: 4 * index + 2,
-      ease: 'strong.inOut'
+      ease: 'power1.out'
     });
   }
 }
@@ -85,17 +85,6 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   font-size: 25px;
-}
-@keyframes scaleAnimation {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 div {
   // border: 1px solid white;
@@ -143,7 +132,6 @@ div {
         flex: 1;
         height: 100%;
         background-repeat: no-repeat;
-        // animation: scaleAnimation 2s ease;
         animation-delay: #{2 * ($i - 1)}s;
       }
     }
