@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
-    <div class="iconTitle">
+    <!-- <div class="iconTitle">
       <text>Crafter</text>
-    </div>
+    </div> -->
     <div class="imageContainer">
       <div
         v-for="(value, index) in imageList"
@@ -49,8 +49,8 @@ import { ref, onMounted } from 'vue';
 import gsap from 'gsap';
 let imageList = ref(['gundam', 'girl', 'trans', 'gang']);
 let offSets = ref(['40%', '45%', '50%', '40%']);
-var scales = ref([{ value: 260 }, { value: 310 }, { value: 330 }, { value: 160 }]);
-var scalesTo = ref([{ value: 280 }, { value: 330 }, { value: 350 }, { value: 180 }]);
+var scales = ref([{ value: 230 }, { value: 310 }, { value: 330 }, { value: 160 }]);
+var scalesTo = ref([{ value: 260 }, { value: 360 }, { value: 360 }, { value: 190 }]);
 var userName = ref(null);
 var passWord = ref(null);
 var image0 = ref(null);
@@ -74,10 +74,10 @@ function playAnimation() {
   }
 }
 onMounted(() => {
-  playAnimation();
-  setInterval(() => {
-    playAnimation();
-  }, 17000);
+  // playAnimation();
+  // setInterval(() => {
+  //   playAnimation();
+  // }, 17000);
 });
 </script>
 <style lang="scss" scoped>
@@ -132,7 +132,8 @@ div {
         flex: 1;
         height: 100%;
         background-repeat: no-repeat;
-        animation-delay: #{2 * ($i - 1)}s;
+        margin-left: 1px;
+        margin-right: 1px;
       }
     }
   }
