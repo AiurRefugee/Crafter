@@ -54,7 +54,7 @@ import { RouterLink, RouterView } from 'vue-router';
 import HelloWorld from './components/HelloWorld.vue';
 import { ref, onMounted } from 'vue';
 let imageList = ref(['Car3','gundam', 'girl', 'trans', 'gang']);
-let offSets = ref(['40%', '40%', '45%', '50%', '40%']);
+let offSets = ref(['45%', '35%', '43%', '45%', '50%', '40%']);
 var scales = ref([{ value: 260 }, { value: 310 }, { value: 330 }, { value: 160 }]);
 var scalesTo = ref([{ value: 280 }, { value: 330 }, { value: 350 }, { value: 180 }]);
 var userName = ref(null);
@@ -179,10 +179,10 @@ div {
     z-index: 99;
     color: white;
     background-size: cover;
-    background-color: rgba(200, 200, 200, 0.9);
+    background-color: rgba(200, 200, 200, 0.8);
     // border: 10px solid black;
-    backdrop-filter: blur(10px);
-    box-shadow: 10px 10px 10px rgb(195, 193, 193), -20px -20px 20px rgba(0, 0, 0, 0.3);
+    // backdrop-filter: blur(10px);
+    box-shadow: 10px 10px 20px rgb(186 185 185), -20px -20px 20px rgba(0, 0, 0, 0.3);
     // filter: blur(3px);
 
     @media (max-width: 700px) {
