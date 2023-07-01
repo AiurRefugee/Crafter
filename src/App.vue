@@ -7,15 +7,10 @@
     <div class="subTitle">
       Create your crafts on every sites
     </div>
-    <div class="loginButtom">
+    <div class="loginButtom" @click.stop.prevent="clickButton">
       <text>Get into Crafter </text>
     </div>
-    <div class="iconsArea">
-      <div
-        v-for="i in platforms"
-        class="platfrom">
-      </div>
-    </div>
+     
    </div>
     <div class="imageContainer">
       <div
@@ -30,46 +25,17 @@
         }"></div>
       </div>
     </div>
-    <!-- <div class="loginArea">
-      <div class="loginTitle">
-
-      </div>
-      <div class="textArea">
-        <text> Username or email address</text>
-      </div>
-      <div class="inputArea">
-
-      </div>
-      <div class="textArea">
-        <text> Password</text>
-      </div>
-      <div class="inputArea">
-
-      </div>
-      <div class="loginIcons">
-        <el-row :gutter="20">
-
-        </el-row>
-      </div>
-      <div class="buttonArea">
-        <el-button type="primary" size="large">Sign in</el-button>
-      </div>
-    </div> -->
   </div>
 </template>
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
 import HelloWorld from './components/HelloWorld.vue';
 import { ref, onMounted } from 'vue';
+import { ElMessage } from 'element-plus';
 let imageList = ref(['Car3','gundam', 'girl', 'trans', 'gang']);
-let platforms = ref(['PC','Mac', 'Android', 'iOS']);
-var userName = ref(null);
-var passWord = ref(null);
-var image0 = ref(null);
-var image1 = ref(null);
-var image2 = ref(null);
-var image3 = ref(null);
-
+function clickButton() {
+  ElMessage("this is message")
+}
 onMounted(() => {
 
 });
@@ -108,9 +74,9 @@ div {
     position: absolute;
     flex-direction: column;
     color: white;
+    pointer-events: none;
     width: 90%;
     height: 60%;
-    pointer-events: none;
     filter: brightness(1.05);
     @media (max-width: 1000px) {
       position: absolute;
@@ -118,21 +84,20 @@ div {
     }
     .iconTitle {
       width: 90%;
-      height: 25%;
+      height: 28%;
       z-index: 99;
       font-size: 130px;
       padding: 1%;
       font-weight: 800;
-      font-family: Apple SD Gothic Neo;
+      font-family: Apple SD Gothic Neo; 
       font-style: oblique;
-      letter-spacing: 25px;
-      align-content: center;
-      line-height: 1;
       pointer-events: none;
-      text-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
+      letter-spacing: 25px;
+      align-content: center;  
+      text-shadow: 10px 10px 25px rgba(0, 0, 0, 1);
 
       @media (max-width: 1000px) {
-        height: 15%;
+        height: 10%;
       }
     }
 
@@ -141,15 +106,15 @@ div {
       height: 15%;
       padding: 1%;
       font-size: 50px;
+      pointer-events: none;
       z-index: 99;
       font-weight: 800;
       font-family: Apple SD Gothic Neo;
-      text-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
-      letter-spacing: 5px;
-      pointer-events: none;
+      text-shadow: 10px 10px 25px rgba(0, 0, 0, 1);
+      letter-spacing: 5px; 
       @media (max-width: 1000px) {
         font-size: 40px;
-        height: 20%;
+        height: 15%;
       }
 
     }
@@ -159,7 +124,9 @@ div {
       height: 15%;
       background-color: #409eff;
       border-radius: 90px;
-      font-size: 45px;
+      font-size: 35px;
+      pointer-events: auto;
+      z-index: 99;
       transition: transform 1.5s ease;
       font-family: Apple SD Gothic Neo;
       text-shadow: 10px 0px 25px rgba(0, 0, 0, 1);
@@ -167,6 +134,7 @@ div {
       @media (max-width: 1000px) {
         width: 550px;
         height: 120px;
+        font-size: 45px;
       }
     }
   }
