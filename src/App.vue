@@ -7,20 +7,30 @@
     <div class="subTitle">
       Create your crafts on every sites
     </div>
+    <div class="loginButtom">
+      <text>Get into Crafter </text>
+    </div>
+    <div class="iconsArea">
+      <div
+        v-for="i in platforms"
+        class="platfrom">
+      </div>
+    </div>
    </div>
     <div class="imageContainer">
       <div
-        v-for="(value, index) in imageList"
-        class="imageItem"
-        :ref="`image${index}`"
+      v-for="(value, index) in imageList"
+      class="imageWapper"
+      >
+        <div
+        :class="`imageItem${index + 1}`"
         :style="{
-          'background-position': `${offSets[index]}`,
           'background-image': `url('/src/assets/images/${value}.JPG')`,
           // 'background-size': `${scales[index].value}%`
-        }"
-      ></div>
+        }"></div>
+      </div>
     </div>
-    <div class="loginArea">
+    <!-- <div class="loginArea">
       <div class="loginTitle">
 
       </div>
@@ -28,25 +38,23 @@
         <text> Username or email address</text>
       </div>
       <div class="inputArea">
-        <el-input v-model="userName"></el-input>
+
       </div>
       <div class="textArea">
         <text> Password</text>
       </div>
       <div class="inputArea">
-        <el-input v-model="passWord"></el-input>
+
       </div>
       <div class="loginIcons">
         <el-row :gutter="20">
-          <el-col :span="6">
-            <el-icon></el-icon>
-          </el-col>
+
         </el-row>
       </div>
       <div class="buttonArea">
         <el-button type="primary" size="large">Sign in</el-button>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script setup lang="ts">
@@ -54,26 +62,14 @@ import { RouterLink, RouterView } from 'vue-router';
 import HelloWorld from './components/HelloWorld.vue';
 import { ref, onMounted } from 'vue';
 let imageList = ref(['Car3','gundam', 'girl', 'trans', 'gang']);
-let offSets = ref(['45%', '35%', '43%', '45%', '50%', '40%']);
-var scales = ref([{ value: 260 }, { value: 310 }, { value: 330 }, { value: 160 }]);
-var scalesTo = ref([{ value: 280 }, { value: 330 }, { value: 350 }, { value: 180 }]);
+let platforms = ref(['PC','Mac', 'Android', 'iOS']);
 var userName = ref(null);
 var passWord = ref(null);
 var image0 = ref(null);
 var image1 = ref(null);
 var image2 = ref(null);
 var image3 = ref(null);
-function playAnimation() {
-  for (let index = 0; index < scales.value.length; index++) {
-    gsap.to(scales.value[index], {
-      duration: 2,
-      value: scalesTo.value[index].value,
-      delay: 4 * index,
-      ease: 'strong.inOut'
-    });
 
-  }
-}
 onMounted(() => {
 
 });
@@ -88,6 +84,8 @@ onMounted(() => {
 div {
   // border: 1px solid white;
   display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: auto;
   -ms-overflow-style: none; /* IE 和 Edge */
   scrollbar-width: none; /* Firefox */
@@ -102,93 +100,146 @@ div {
   height: 100vh;
   position: relative;
 
+  @media (max-width: 1500px) {
+    flex-direction: column;
+  }
   .titleArea {
     z-index: 99;
     position: absolute;
+    flex-direction: column;
     color: white;
-    width: 50%;
-    height: 50%;
-    top: 20%;
+    width: 90%;
+    height: 60%;
     pointer-events: none;
-    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
-    @media (max-width: 700px) {
-      width: 100%;
-      height: 30%;
-      top: 0;
+    filter: brightness(1.05);
+    @media (max-width: 1000px) {
+      position: absolute;
+      top: 18%;
     }
     .iconTitle {
       width: 90%;
-      height: 60%;
-      font-size: 120px;
-      justify-content: flex-start;
-      top: 20%;
+      height: 25%;
+      z-index: 99;
+      font-size: 130px;
       padding: 1%;
       font-weight: 800;
       font-family: Apple SD Gothic Neo;
       font-style: oblique;
-      letter-spacing: 5px;
-      align-content: flex-start;
-      line-height: normal;
+      letter-spacing: 25px;
+      align-content: center;
+      line-height: 1;
       pointer-events: none;
-      //box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
+
+      @media (max-width: 1000px) {
+        height: 15%;
+      }
+    }
+
+    .subTitle {
+      width: 90%;
+      height: 15%;
+      padding: 1%;
+      font-size: 50px;
+      z-index: 99;
+      font-weight: 800;
+      font-family: Apple SD Gothic Neo;
+      text-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
+      letter-spacing: 5px;
+      pointer-events: none;
+      @media (max-width: 1000px) {
+        font-size: 40px;
+        height: 20%;
+      }
 
     }
-  .subTitle {
-    position: absolute;
-    width: 80%;
-    margin-left: 15%;
-    top: 35%;
-    padding: 3%;
-    font-size: 25px;
-    font-family: Apple SD Gothic Neo;
-    letter-spacing: 5px;
-    pointer-events: none;
-  }
+    .loginButtom {
+      margin-top: 6%;
+      width: 500px;
+      height: 15%;
+      background-color: #409eff;
+      border-radius: 90px;
+      font-size: 45px;
+      transition: transform 1.5s ease;
+      font-family: Apple SD Gothic Neo;
+      text-shadow: 10px 0px 25px rgba(0, 0, 0, 1);
+      box-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
+      @media (max-width: 1000px) {
+        width: 550px;
+        height: 120px;
+      }
+    }
   }
   .imageContainer {
     width: 100%;
     height: 100%;
+    z-index: 0;
     background-color: black;
     opacity: 0.9;
     // filter: blur(1px);
+    $scales: 450%, 310%, 400%, 420%, 200%;
+    $hoverScale: 500%, 320%, 510%, 60%, 400%;
+    $offset: 45%, 35%, 43%, 45%, 50%;
+    $offset-y: 60%, 20%, 20%, 15%, 60%;
+    @media (max-width: 1000px) {
+      flex-direction: column;
+    }
+    .imageWapper {
+      @for $i from 1 through 5 {
+        flex: 1;
+        height: 100%;
+        overflow: hidden;
+        @media (max-width: 1000px) {
+          width: 100%;
+        }
+        .imageItem#{$i} {
+          width: 100%;
+          height: 100%;
+          background-position: nth($list: $offset, $n: $i);
+          background-repeat: no-repeat;
+          transition: transform 1.5s ease;
+          background-size: cover;
+          padding-left: 1px;
+          padding-right: 1px;
+          opacity: 0.8;
+          filter: blur(2px);
+          @media (max-width: 1000px) {
+            background-position-y: nth($list: $offset-y, $n: $i);
+          }
+        }
+        :hover {
+          transform: scale(1.05);
+          filter: brightness(1.05);
+          opacity: 1;
+        }
 
-    .imageItem {
-      flex: 1;
-      height: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      filter: blur(2px);
+      }
     }
-    :hover {
-      transform: scale(1.1);
-      filter: none;
-    }
+
 
   }
   .loginArea {
     flex-direction: column;
-    pointer-events: none;
     align-items: center;
+    pointer-events: none;
     padding: 2%;
     width: 35%;
     height: 70%;
-    border-radius: 10%;
-    right: 5%;
+    border-radius: 2%;
+    right: 6%;
     top: 15%;
     position: absolute;
     z-index: 99;
     color: white;
     background-size: cover;
     background-color: rgba(200, 200, 200, 0.8);
-    // border: 10px solid black;
-    // backdrop-filter: blur(10px);
-    box-shadow: 10px 10px 20px rgb(186 185 185), -20px -20px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 20px rgb(186 185 185), -20px -20px 20px rgba(0, 0, 0, 0.3);
     // filter: blur(3px);
 
-    @media (max-width: 700px) {
+    @media (max-width: 1000px) {
       width: 60%;
       height: 50%;
-      top: 40%;
+      top: 30%;
       left: 20%;
     }
     .loginTitle {
