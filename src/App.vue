@@ -91,13 +91,14 @@ div {
       font-weight: 800;
       font-family: Apple SD Gothic Neo; 
       font-style: oblique;
+      text-align: center;
       pointer-events: none;
       letter-spacing: 25px;
       align-content: center;  
       text-shadow: 10px 10px 25px rgba(0, 0, 0, 1);
 
       @media (max-width: 1000px) {
-        height: 10%;
+        height: 20%;
       }
     }
 
@@ -109,6 +110,7 @@ div {
       pointer-events: none;
       z-index: 99;
       font-weight: 800;
+      text-align: center;
       font-family: Apple SD Gothic Neo;
       text-shadow: 10px 10px 25px rgba(0, 0, 0, 1);
       letter-spacing: 5px; 
@@ -123,8 +125,8 @@ div {
       width: 500px;
       height: 15%;
       background-color: #409eff;
-      border-radius: 90px;
-      font-size: 35px;
+      border-radius: 100px;
+      font-size: 40px;
       pointer-events: auto;
       z-index: 99;
       transition: transform 1.5s ease;
@@ -132,8 +134,8 @@ div {
       text-shadow: 10px 0px 25px rgba(0, 0, 0, 1);
       box-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
       @media (max-width: 1000px) {
-        width: 550px;
-        height: 120px;
+        width: 60%;
+        height: 16%;
         font-size: 45px;
       }
     }
