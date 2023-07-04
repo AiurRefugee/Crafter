@@ -1,4 +1,6 @@
 import './style/common.css'
+import './style/el-style.css'
+import "./style/el-variables.scss";
 
 import { createApp } from 'vue'
 import App from './App.vue'

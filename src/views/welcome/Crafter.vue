@@ -25,7 +25,7 @@
         }"></div>
       </div>
     </div>
-    <Transition>
+    <Transition name="fade">
       <loginArea v-if="showLogin"></loginArea>
     </Transition>
   </div>
@@ -65,6 +65,15 @@ div {
     display: none;
   }
 
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 .app-container {
   width: 100vw;
