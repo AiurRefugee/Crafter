@@ -5,7 +5,7 @@
 
 .el-row {
     width: 100%; 
-    height: 50px;
+    height: 60px;
     
 }
 /* .el-input--large .el-input__wrapper {
@@ -13,7 +13,7 @@
 } */
 .el-button--large {
     width: 100%;
-    height: 50px;
+    height: 60px;
     font-size: 25px;
 }
 .el-divider__text.is-center {
@@ -22,4 +22,9 @@
 }
 .el-col {
     color: gray; 
+}
+
+.el-input--large .el-input__inner {
+    font-size: 25px;
+    height: 60px;
 }

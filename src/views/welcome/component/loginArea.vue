@@ -7,15 +7,25 @@
                 </el-row>
                 <el-row >
                     <el-col :span="24" class="inputTitle">
-                        <el-input  size="large"></el-input>
+                        <el-input  
+                            size="large"
+                            v-model="form.username"
+                            >
+                        </el-input>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="24" class="inputTitle">密码</el-col>
                 </el-row>  
                 <el-row >
-                    <el-col :span="24" class="inputTitle">
-                        <el-input show-password type="password" size="large"></el-input>
+                    <el-col :span="24" >
+                        <el-input 
+                            show-password 
+                            type="password" 
+                            size="large"
+                            v-model="form.password"
+                            >
+                        </el-input>
                     </el-col>
                 </el-row> 
                 <el-row>
@@ -56,6 +66,10 @@ import { ref } from 'vue'
 import { ElMessage } from 'element-plus';
 let iconBaseUrl = ref('/src/assets/images/')
 let iconList = ref(['unity','apple', 'github', 'google'])
+var form = ref({
+    username: "",
+    password: ""
+})
 function message() {
     ElMessage({
         message: 'to be continued.',
@@ -97,7 +111,7 @@ function message() {
         }
         .inputTitle {
             width: 80%;
-            height: 40px;
+            height: 60px;
             flex: 1;
             // border: 1px solid black;
             justify-content: flex-start;
