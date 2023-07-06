@@ -1,5 +1,5 @@
 @import '@/style/sidebar.scss';
-
+@import '@/style/variables.scss';
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;
@@ -77,17 +77,24 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  color: black;
 }
 .app-wrapper {
   width: 100vw;
   height: 100vh;
   background-color: black;
   flex-direction: column;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 }
 .home-component-wrapper {
   display: flex;
   height: 100%;
   flex: 1;
   background-color: gray;
+}
+.sideBarItem {
+  width: 100%;
+  height: 20%;
 }
