@@ -1,7 +1,7 @@
 <template>
     <div class="loginWapper">
         <div class="loginArea"> 
-            <el-space direction="vertical" :size="2">
+            <el-space direction="vertical" :size="0">
                 <el-row >
                     <el-col :span="24" class="inputTitle">账号/邮箱/用户名</el-col>
                 </el-row>
@@ -35,7 +35,7 @@
                 </el-row>
                 <el-row class="loginButton">
                     <el-col :span="24" class="inputTitle">
-                        <el-button type="primary" size="large">
+                        <el-button type="primary" size="large" @click="login">
                             <text>登录</text>
                         </el-button>
                     </el-col>
@@ -63,7 +63,10 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-import { ElMessage } from 'element-plus';
+import { ElMessage } from 'element-plus'; 
+import { useRouter, useRoute } from 'vue-router'
+
+const router = useRouter() // 路由
 let iconBaseUrl = ref('/src/assets/images/')
 let iconList = ref(['unity','apple', 'github', 'google'])
 var form = ref({
@@ -75,6 +78,11 @@ function message() {
         message: 'to be continued.',
         type: 'warning',
     })
+}
+
+function login() {
+    console.log(router)
+    router.push({name: 'home'})
 }
 </script>
 
@@ -96,7 +104,7 @@ function message() {
         align-items: center; 
         padding: 5%;
         width: 60%;
-        height: 75%;
+        height: 76vh;
         border-radius: 30px;  
         position: absolute;
         z-index: 99;
@@ -111,7 +119,7 @@ function message() {
         }
         .inputTitle {
             width: 80%;
-            height: 60px;
+            height: 50px;
             flex: 1;
             // border: 1px solid black;
             justify-content: flex-start;
