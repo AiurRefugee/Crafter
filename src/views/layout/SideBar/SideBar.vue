@@ -43,15 +43,11 @@ $iconSize: 30px;
   height: 100vh;
   flex-direction: column;
   background-color: rgb(242, 243, 245);
-  position: absolute;
-  left: 0;
   @media (max-width: 1000px) {
     flex-direction: row;
     width: 100vw;
     height: 8vh;
     background-color: white;
-    position: absolute;
-    bottom: 0;
   }
 
   
@@ -61,6 +57,7 @@ $iconSize: 30px;
       width: 100%;
       height: 15%;
       font-size: 25px;
+      color: black;
       // flex-direction: column;
       font-family: Apple SD Gothic Neo;
       padding: 2%;
@@ -72,11 +69,11 @@ $iconSize: 30px;
       
       
       
-      .iconArea {
-        fill: $--color-primary;
+      .iconArea { 
         margin: 1%;
         width: $iconSize;
         height: $iconSize;
+        color: black;
       }
     }
 

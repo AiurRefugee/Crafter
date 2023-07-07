@@ -13,6 +13,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/editor',
+      name: 'editor',
+      component: () => import ('@/views/edit/edit.vue'),
+      meta: {
+        title: 'editor'
+      }
+    },
+    {
       path: '/Home',
       name: 'Home',
       // route level code-splitting
