@@ -21,7 +21,50 @@ const router = createRouter({
       component: () => import('@/views/layout/Home.vue'),
       meta: {
         title: 'Home'
-      }
+      },
+      children: [
+        {
+          path: '/workbench',
+          name: 'workbench',
+          component: () => import('@/views/workbench/workbench.vue'),
+          meta: {
+            title: 'workbench'
+          }
+        },
+        {
+          path: '/messages',
+          name: 'messages',
+          component: () => import('@/views/messages/messages.vue'),
+          meta: {
+            title: 'messages'
+          }
+        },
+        {
+          path: '/market',
+          name: 'maarket',
+          component: () => import('@/views/market/market.vue'),
+          meta: {
+            title: 'market'
+          }
+        },
+        {
+          path: '/machine',
+          name: 'machine',
+          component: () => import('@/views/machine/machine.vue'),
+          meta: {
+            title: 'machine'
+          }
+        },
+        {
+          path: '/profile',
+          name: 'profile',
+          component: () => import('@/views/profile/profile.vue'),
+          meta: {
+            title: 'profile'
+          }
+        },
+
+      ]
     }
   ]
 });

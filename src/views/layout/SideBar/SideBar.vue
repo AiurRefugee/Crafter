@@ -1,10 +1,19 @@
 <template>
   <div class="sidebar-wrapper">
-    <div :class="`sideBarItem${index + 1}`" v-for="(value, index) in sideBars">
-      <div class="iconArea">
-        <el-image :src="`${iconBaseUrl}${value.iconName}.svg`"></el-image>
-      </div>
-      <div>{{ value.name }}</div>
+    <div 
+      :class="[`sideBarItem${index + 1}`, currentSelect == index ? 'activated' : '']"   
+      v-for="(value, index) in sideBars" 
+      :key="`sideBar${index}`"
+      @click="activate(index)"
+      >
+      <router-link :to="`/${value.iconName}`">
+        <div class="iconArea">
+          <el-image 
+          :src="`${iconBaseUrl}${value.iconName}.svg`" 
+          ></el-image>
+        </div>
+        <div>{{ value.name }}</div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -12,16 +21,23 @@
 import { ref } from 'vue';
 let iconBaseUrl = ref('/src/assets/icons/');
 let sideBars = ref([
-  { name: '工作台', iconName: 'workBench' },
+  { name: '工作台', iconName: 'workbench' },
   { name: '动态', iconName: 'messages' },
   { name: '商城', iconName: 'market' },
+  { name: '设备', iconName: 'machine' },
   { name: '我的', iconName: 'profile' }
 ]);
 var currentSelect = ref(0);
+function activate(index) {
+  currentSelect.value = index 
+}
 </script>
 <style lang="scss">
-$iconSize: 25px;
+$iconSize: 30px;
 @import '@/style/el-variables.scss';
+.activated {
+    color: blue;
+  }
 .sidebar-wrapper {
   width: 10vw;
   height: 100vh;
@@ -37,20 +53,28 @@ $iconSize: 25px;
     position: absolute;
     bottom: 0;
   }
-  @for $i from 1 through 4 {
+
+  
+
+  @for $i from 1 through 5 {
     .sideBarItem#{$i} {
       width: 100%;
       height: 15%;
       font-size: 25px;
-      flex-direction: column;
+      // flex-direction: column;
       font-family: Apple SD Gothic Neo;
       padding: 2%;
       @media (max-width: 1000px) {
         height: 100%;
+        flex-direction: column;
         flex: 1;
       }
+      
+      
+      
       .iconArea {
         fill: $--color-primary;
+        margin: 1%;
         width: $iconSize;
         height: $iconSize;
       }
@@ -58,7 +82,8 @@ $iconSize: 25px;
 
     :hover {
       background-color: rgb(173, 172, 172);
-    }
+      //color: $--color-primary;
+    } 
   }
 }
 </style>

@@ -79,7 +79,7 @@ div {
   width: 100vw;
   height: 100vh;
   position: relative;
-
+  color: white;
   @media (max-width: 1500px) {
     flex-direction: column;
   }
@@ -107,6 +107,7 @@ div {
       font-style: oblique;
       text-align: center;
       pointer-events: none;
+      color: white;
       letter-spacing: 25px;
       align-content: center;  
       text-shadow: 10px 10px 25px rgba(0, 0, 0, 1);
@@ -123,6 +124,7 @@ div {
       font-size: 50px;
       pointer-events: none;
       z-index: 99;
+      color: white;
       font-weight: 800;
       text-align: center;
       font-family: Apple SD Gothic Neo;
@@ -140,6 +142,7 @@ div {
       height: 15%;
       background-color: #409eff;
       border-radius: 100px;
+      color: white;
       font-size: 40px;
       pointer-events: auto;
       z-index: 99;
