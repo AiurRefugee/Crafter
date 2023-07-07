@@ -16,6 +16,7 @@
       <div
       v-for="(value, index) in imageList"
       class="imageWapper"
+      :key="`image${index}`"
       >
         <div
         :class="`imageItem${index + 1}`"
@@ -66,20 +67,12 @@ div {
   }
 
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease-in-out;
-}
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
 .app-container {
   width: 100vw;
   height: 100vh;
   position: relative;
-
+  color: white;
   @media (max-width: 1500px) {
     flex-direction: column;
   }
@@ -107,6 +100,7 @@ div {
       font-style: oblique;
       text-align: center;
       pointer-events: none;
+      color: white;
       letter-spacing: 25px;
       align-content: center;  
       text-shadow: 10px 10px 25px rgba(0, 0, 0, 1);
@@ -123,6 +117,7 @@ div {
       font-size: 50px;
       pointer-events: none;
       z-index: 99;
+      color: white;
       font-weight: 800;
       text-align: center;
       font-family: Apple SD Gothic Neo;
@@ -140,6 +135,7 @@ div {
       height: 15%;
       background-color: #409eff;
       border-radius: 100px;
+      color: white;
       font-size: 40px;
       pointer-events: auto;
       z-index: 99;

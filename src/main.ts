@@ -1,6 +1,7 @@
-import './style/common.css'
-import './style/el-style.css'
+import './style/common.scss'
+import './style/el-style.scss'
 import "./style/el-variables.scss";
+import "./style/var-style.scss"
 
 import Varlet from '@varlet/ui'
 import { createApp } from 'vue'

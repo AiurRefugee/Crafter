@@ -5,8 +5,8 @@
 
 .el-row {
     width: 100%; 
-    height: 50px;
-    
+    height: 60px;
+    display: flex;
 }
 /* .el-input--large .el-input__wrapper {
     border: 1px solid black;
@@ -22,4 +22,24 @@
 }
 .el-col {
     color: gray; 
+}
+
+.el-input--large .el-input__inner {
+    font-size: 25px;
+    height: 60px;
+}
+
+.iconArea .el-image {
+    display: contents;
+}
+
+// transition
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
