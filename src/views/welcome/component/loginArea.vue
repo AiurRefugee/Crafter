@@ -1,7 +1,7 @@
 <template>
   <div class="loginWapper">
     <div class="loginArea">
-      <el-space direction="vertical" :size="0">
+      <el-space direction="vertical" :size="2">
         <el-row>
           <el-col :span="24" class="inputTitle">账号/邮箱/用户名</el-col>
         </el-row>
@@ -32,13 +32,15 @@
         </el-row>
         <el-divider content-position="center">更多方式</el-divider>
         <el-row>
-          <el-col :span="4" v-for="i in iconList">
+          <el-col :span="4" v-for="i in iconList" :key="`span${i}`">
             <el-avatar :src="`${iconBaseUrl}${i}.svg`" :size="50" fit="fit" @click="message"></el-avatar>
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="24">
-            <span>还没有账户？</span>
+          <el-col :span="3">
+            <span>还没有账户？</span> 
+          </el-col >
+          <el-col :span="2">
             <a href="www.bilibili.com" style="color: #1f75cb">立即注册</a>
           </el-col>
         </el-row>
@@ -70,8 +72,7 @@ function message() {
   });
 }
 
-function login() {
-  console.log(router);
+function login() { 
   router.push({ name: 'Home' });
 }
 </script>
