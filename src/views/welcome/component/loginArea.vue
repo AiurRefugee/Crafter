@@ -37,8 +37,10 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="24">
+          <el-col :span="3">
             <span>还没有账户？</span>
+          </el-col>
+          <el-col :span="3">
             <a href="www.bilibili.com" style="color: #1f75cb">立即注册</a>
           </el-col>
         </el-row>
