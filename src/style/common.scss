@@ -77,7 +77,6 @@ div {
   display: flex;
   justify-content: center;
   align-items: center; 
-  overflow: auto;
   // border: 1px solid black;
 }
 
@@ -99,8 +98,8 @@ a {
 .app-wrapper {
   width: 100vw;
   height: 100vh;
-  justify-content: flex-start;
   background-color: gray; 
+  justify-content: flex-start;
   @media (max-width: 1000px) {
     flex-direction: column-reverse;
     justify-content: flex-start;
