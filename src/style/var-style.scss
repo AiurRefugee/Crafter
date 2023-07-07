@@ -1,0 +1,10 @@
+.var-row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+.var--box * {
+    box-sizing: border-box;
+    width: 100%;
+}
