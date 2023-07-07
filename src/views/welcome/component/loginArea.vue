@@ -1,56 +1,53 @@
 <template>
     <div class="loginWapper">
         <div class="loginArea"> 
-          <var-space direction="column" :size="[20, 20]" justify="space-around">
-                <var-row >
-                    <var-col :span="24" class="inputTitle">账号/邮箱/用户名</var-col>
-                </var-row>
-                <var-row >
-                    <var-col :span="24" class="inputTitle">
-                        <var-input variant="outlined" placeholder="请输入账号/邮箱/用户名" size="large"></var-input>
-                    </var-col>
-                </var-row>
-                <var-row>
-                    <var-col :span="24" class="inputTitle">密码</var-col>
-                </var-row>  
-                <var-row >
-                    <var-col :span="24" class="inputTitle" >
-                        <var-input  variant="outlined" placeholder="请输入密码"  size="large"></var-input>
-                    </var-col>
-                </var-row> 
-                <var-row>
-                    <var-col :span="8" :offset="21">
+            <el-space direction="vertical" :size="2">
+                <el-row >
+                    <el-col :span="24" class="inputTitle">账号/邮箱/用户名</el-col>
+                </el-row>
+                <el-row >
+                    <el-col :span="24" class="inputTitle">
+                        <el-input  size="large"></el-input>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24" class="inputTitle">密码</el-col>
+                </el-row>  
+                <el-row >
+                    <el-col :span="24" class="inputTitle">
+                        <el-input show-password type="password" size="large"></el-input>
+                    </el-col>
+                </el-row> 
+                <el-row>
+                    <el-col :span="8" :offset="21">
                         <a style="color: #1f75cb">忘记密码？</a>
-                    </var-col>
-                </var-row>
-                <var-row class="loginButton">
-                    <var-col :span="24" class="inputTitle">
-                        <var-button type="primary" size="large">
+                    </el-col>
+                </el-row>
+                <el-row class="loginButton">
+                    <el-col :span="24" class="inputTitle">
+                        <el-button type="primary" size="large">
                             <text>登录</text>
-                        </var-button>
-                    </var-col>
-                </var-row>
-                <var-divider content-position="center">更多方式</var-divider>
-                <var-row justify="center">
-                    <var-col :span="4" v-for="i in iconList" :key="`span${i}`">
-                        <var-avatar :src="`${iconBaseUrl}${i}.svg`" :size="50" fit="fit" @click="message"></var-avatar>
-                    </var-col>
-                </var-row>
-                <var-row>
-                    <var-col :span="3" :offset="10">
+                        </el-button>
+                    </el-col>
+                </el-row>
+                <el-divider content-position="center">更多方式</el-divider>
+                <el-row>
+                    <el-col :span="4" v-for="i in iconList">
+                        <el-avatar :src="`${iconBaseUrl}${i}.svg`" :size="50" fit="fit" @click="message"></el-avatar>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
                         <span>还没有账户？</span>
-                        
-                    </var-col>
-                    <var-col :span="3">
-                      <a href="www.bilibili.com" style="color: #1f75cb">立即注册</a>
-                    </var-col>
-                </var-row>
-                <var-row>
-                    <var-col :span="24" style="margin-top: -1%;">
+                        <a href="www.bilibili.com" style="color: #1f75cb">立即注册</a>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24" style="margin-top: -1%;">
                         登入即代表您同意并接受极狐Crafter服务条款和账号规范。如使用企业邮箱订阅本服务，则您同意Crafter将该账户数据提供给对应企业而无需另行对您进行通知或承担责任。
-                    </var-col>
-                </var-row> 
-            </var-space> 
+                    </el-col>
+                </el-row>
+            </el-space>
         </div>
     </div>
 </template>
@@ -68,7 +65,7 @@ function message() {
 </script>
 
 <style lang="scss">
-:deep(.var-divider__text ){
+:deep(.el-divider__text ){
     color: gray;
 }
 .loginWapper {
@@ -102,11 +99,10 @@ function message() {
             width: 80%;
             height: 40px;
             flex: 1;
-            // margin-top: 5%;
             // border: 1px solid black;
             justify-content: flex-start;
             font-size: 24px;
-            color: black;
+            color: gray;
         }
         .loginButton {
             margin-top: 1%;
