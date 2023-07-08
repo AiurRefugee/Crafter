@@ -12,7 +12,7 @@
         <div class="mainArea">
             <div class="scroll-wrapper">
                 <div class="infinite-list"
-                :style="{'grid-template-columns': `repeat(auto-fill, ${itemSize / 4 + 21 + '%'})`}"
+                :style="{'grid-template-columns': `repeat(auto-fill, ${itemSize / 7 + 16 + '%'})`}"
                 > 
                     <div v-for="i in count" 
                         :key="i" class="infinite-list-item" 
