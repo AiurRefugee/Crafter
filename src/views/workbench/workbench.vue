@@ -11,10 +11,12 @@
         </div>
         <div class="mainArea">
             <div class="scroll-wrapper">
-                <div class="infinite-list"> 
+                <div class="infinite-list"
+                :style="{'grid-template-columns': `repeat(auto-fill, ${itemSize / 4 + 21 + '%'})`}"
+                > 
                     <div v-for="i in count" 
                         :key="i" class="infinite-list-item" 
-                         :style="{width: itemSize / 4 + 20 + '%' }"
+                          
                         @click="toEditor"> 
                         <div class="iconArea"></div>
                         <div class="title">
@@ -33,7 +35,7 @@ import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter(); // 路由
 
-var itemSize = ref(0)
+var itemSize = ref(50)
 const count = ref(47)
 const load = async () => {
   count.value += 10
@@ -99,14 +101,20 @@ function toEditor() {
         
         margin: 0;
         .infinite-list { 
-            width: 100%;
+            width: 99%;
             height: 100%;  
-            padding-top: 15px; 
-            grid-template-columns: repeat(auto-fill, 25%);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 40%);
+            justify-items: center;
+            row-gap: 2%;
+            column-gap: 2%; 
+            padding: 2%;
             flex-wrap: wrap;
             overflow: auto;
             .infinite-list-item {
-                display: flex;  
+                width: 90%;
+
+                aspect-ratio: 1.3;
                 align-items: center;
                 justify-content: center; 
                 flex-direction: column;
