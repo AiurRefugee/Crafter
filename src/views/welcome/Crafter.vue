@@ -125,7 +125,7 @@ div {
       letter-spacing: 5px; 
       @media (max-width: 1000px) {
         font-size: 40px;
-        height: 15%;
+        min-height: 18%;
       }
 
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="loginWapper">
     <div class="loginArea">
-      <el-space direction="vertical" :size="2">
+      <el-space direction="vertical" :size="5">
         <el-row>
           <el-col :span="24" class="inputTitle">账号/邮箱/用户名</el-col>
         </el-row>
@@ -37,12 +37,11 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="3">
+          <el-col :span="24">
             <span>还没有账户？</span> 
-          </el-col >
-          <el-col :span="2">
             <a href="www.bilibili.com" style="color: #1f75cb">立即注册</a>
-          </el-col>
+
+          </el-col >
         </el-row>
         <el-row>
           <el-col :span="24" style="margin-top: -1%">
@@ -106,7 +105,8 @@ function login() {
     // filter: blur(3px);
     @media (max-width: 1000px) {
       width: 80%;
-      height: 50%;
+      height: 52%;
+      font-size: 15px;
     }
     .inputTitle {
       width: 80%;

@@ -6,15 +6,15 @@
             </el-select>
             <Search class="searchIcon"/> 
             <div> 图例大小 </div> 
-            <el-slider v-model="folderSize" class="silderArea"></el-slider>
+            <el-slider v-model="itemSize" :show-tooltip="false" class="silderArea"></el-slider>
             <div class="textArea">选择</div>
         </div>
         <div class="mainArea">
             <div class="scroll-wrapper">
-                <ul v-infinite-scroll="load" class="infinite-list" style="overflow: auto">
+                <div class="infinite-list"> 
                     <div v-for="i in count" 
                         :key="i" class="infinite-list-item" 
-                        :style="{width: 240 + folderSize + 'px'}"
+                         :style="{width: itemSize / 4 + 20 + '%' }"
                         @click="toEditor"> 
                         <div class="iconArea"></div>
                         <div class="title">
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <el-backtop :right="100" :bottom="100" />
-                </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -33,8 +33,8 @@ import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter(); // 路由
 
-var folderSize = ref(50)
-const count = ref(0)
+var itemSize = ref(0)
+const count = ref(47)
 const load = async () => {
   count.value += 10
 }
@@ -64,10 +64,10 @@ function toEditor() {
     color: $--color-primary; 
     .newFile {
         position: absolute;
-        background-color: rgb(234, 234, 234);
+        background-color: rgb(243, 243, 243);
         border-radius: 5px;
-        width: 30px;
-        left: 2%;
+        width: 40px;
+        left: 3%;
     }
     .searchIcon {
         width: 30px;
@@ -88,27 +88,32 @@ function toEditor() {
     flex: 1; 
     flex-direction: column;
     justify-content: flex-start;
-    padding: 1%;
+    // padding: 1%;
+    overflow: hidden; 
     .scroll-wrapper {
-        width: 99%;
+        width: 100%;
         flex: 1;
-        overflow: hidden;
-        .infinite-list {
+        overflow: hidden; 
+        justify-content: center;
+        align-content: flex-start;
+        
+        margin: 0;
+        .infinite-list { 
             width: 100%;
-            height: 800px; 
-            list-style: none;
-            display: flex; 
-            align-content: center;
+            height: 100%;  
+            padding-top: 15px; 
+            grid-template-columns: repeat(auto-fill, 25%);
             flex-wrap: wrap;
+            overflow: auto;
             .infinite-list-item {
-                display: flex; 
+                display: flex;  
                 align-items: center;
                 justify-content: center; 
                 flex-direction: column;
                 aspect-ratio: 1.5;
-                position: relative;
-                width: 200px;
-                margin: 10px;
+                position: relative; 
+                margin: 2%;
+                
                 .iconArea {
                     width: 100%;
                     flex: 1;
@@ -120,7 +125,9 @@ function toEditor() {
                     height: 12%;
                 }
             }
+             
         }
+         
     }
     
 }
