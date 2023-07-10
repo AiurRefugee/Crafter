@@ -94,7 +94,7 @@ function login() {
     align-items: center;
     padding: 5%;
     width: 60%;
-    height: 76vh;
+    height: 80vh;
     border-radius: 30px;
     position: absolute;
     z-index: 99;

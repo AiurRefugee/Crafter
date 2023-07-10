@@ -33,6 +33,7 @@
 import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router';
 
+import * as THREE from 'three'
 const router = useRouter(); // 路由
 
 var itemSize = ref(50)

@@ -4,21 +4,22 @@
       :class="[`sideBarItem${index + 1}`, currentSelect == index ? 'activated' : '']"   
       v-for="(value, index) in sideBars" 
       :key="`sideBar${index}`"
-      @click="activate(index)"
-      >
-      <router-link :to="`/${value.iconName}`">
+      @click="toMain(`/${value.iconName}`)"
+      > 
         <div class="iconArea">
           <el-image 
           :src="`${iconBaseUrl}${value.iconName}.svg`" 
           ></el-image>
         </div>
-        <div>{{ value.name }}</div>
-      </router-link>
+        <div>{{ value.name }}</div> 
     </div>
   </div>
 </template>
 <script setup>
 import { ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+
+const router = useRouter(); // 路由
 let iconBaseUrl = ref('/src/assets/icons/');
 let sideBars = ref([
   { name: '工作台', iconName: 'workbench' },
@@ -30,6 +31,9 @@ let sideBars = ref([
 var currentSelect = ref(0);
 function activate(index) {
   currentSelect.value = index 
+}
+function toMain(url) {
+  router.push(url)
 }
 </script>
 <style lang="scss">
@@ -56,7 +60,7 @@ $iconSize: 30px;
     .sideBarItem#{$i} {
       width: 100%;
       height: 15%;
-      font-size: 25px;
+      font-size: 20px;
       color: black;
       // flex-direction: column;
       font-family: Apple SD Gothic Neo;
@@ -64,7 +68,7 @@ $iconSize: 30px;
       @media (max-width: 1000px) {
         height: 100%;
         flex-direction: column;
-        flex: 1;
+        height: 8vh;
       }
       
       
