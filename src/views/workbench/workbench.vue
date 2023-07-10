@@ -30,10 +30,15 @@
     </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref, watch, nextTick, getCurrentInstance } from 'vue'
 import { useRouter, useRoute } from 'vue-router';
 
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import { GLTFExporter } from 'three/examples/jsm/exporters/GLTFExporter.js'
 const router = useRouter(); // 路由
 
 var itemSize = ref(50)
@@ -44,6 +49,38 @@ const load = async () => {
 function toEditor() {
     router.push('/editor')
 }
+const scene = new THREE.Scene()
+scene.background = new THREE.Color( 0xbfe3dd )
+const renderer = new THREE.WebGLRenderer({ antialias: true,preserveDrawingBuffer: true})
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+const camera = new THREE.PerspectiveCamera(
+  50,
+  window.innerWidth / window.innerHeight  ,
+  0.1,
+  1000
+)
+renderer.shadowMap.enabled = true;
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.setPixelRatio( window.devicePixelRatio );
+renderer.setSize(window.innerWidth , window.innerHeight )
+const controls = new OrbitControls(camera, renderer.domElement)
+camera.position.z = 10
+
+const axesHelper = new THREE.AxesHelper(10)
+let debugSettings = {
+  keypointVisible: false,
+  axesHelperVisible: false
+}
+axesHelper.visible = debugSettings.axesHelperVisible
+scene.add(axesHelper)
+
+//scene.add( hemiLight );
+const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 )
+hemiLight.position.set( 0, 5, 0 )
+scene.add( hemiLight );
+
+document.body.appendChild( renderer.domElement );
+
 </script>
 <style lang="scss" scoped>
 @import '@/style/el-variables.scss';
