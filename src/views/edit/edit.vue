@@ -38,9 +38,9 @@ function init() {
     renderer.shadowMap.enabled = true;
     renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize(window.innerWidth , window.innerHeight )
     const controls = new OrbitControls(camera, renderer.domElement)
     document.body.appendChild( renderer.domElement );
+    console.log("init")
 }
 
 function addAxesHelper() {
@@ -108,8 +108,7 @@ function loadModel() {
 
             // 将动画添加到混合器中，并播放动画
             const animation = mixer.clipAction(animations[3]);
-            animation.play();
-            animate();
+            animation.play(); 
 
 
         },

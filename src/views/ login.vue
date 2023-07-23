@@ -13,6 +13,7 @@ let offSets = ref(['40%','40%','45%','50%','40%'])
 <template>
   <div class="app-container">
     <div v-for="(value, index) in imageList" class="imageItem"
+      :key="`image${index}`"
       :style="{ 
         'background-position': `${offSets[index]}`,
         'background-image': `url('/src/assets/images/${value}.JPG')`

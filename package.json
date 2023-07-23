@@ -10,15 +10,19 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
   },
   "dependencies": {
+    "@antv/l7": "^2.17.3",
+    "@antv/l7plot": "^0.5.5",
     "@element-plus/icons-vue": "^2.1.0",
     "@varlet/ui": "^2.12.2",
     "@vueuse/core": "^10.2.1",
     "element-plus": "^2.3.7",
     "gsap": "^3.12.1",
+    "leafer-ui": "^1.0.0-beta.4",
     "sass": "^1.63.6",
     "scss": "^0.2.4",
     "three": "^0.153.0",
     "vue": "^3.3.4",
+    "vue-amap": "^0.5.10",
     "vue-router": "^4.2.2",
     "vuex": "^4.1.0"
   },
